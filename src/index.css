@@ -137,7 +137,12 @@
     @apply bg-gradient-to-r from-primary to-primary-dark text-primary-foreground;
     @apply hover:from-primary-light hover:to-primary;
     @apply transition-all duration-300 transform hover:scale-105;
-    @apply shadow-lg hover:shadow-glow;
+    @apply shadow-lg;
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.3);
+  }
+  
+  .btn-cinema-primary:hover {
+    box-shadow: var(--shadow-glow);
   }
   
   .btn-cinema-gold {
@@ -151,7 +156,11 @@
     @apply bg-gradient-to-b from-surface to-surface-elevated;
     @apply border border-border rounded-lg overflow-hidden;
     @apply transition-all duration-300 hover:scale-105;
-    @apply shadow-card hover:shadow-cinema;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .movie-card:hover {
+    box-shadow: var(--shadow-cinema);
   }
   
   /* Hero gradient background */
