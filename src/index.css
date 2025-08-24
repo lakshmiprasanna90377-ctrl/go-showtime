@@ -2,39 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Cinema-themed design system with rich reds, golds, and dramatic gradients */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core cinema theme */
+    --background: 220 14% 8%;
+    --foreground: 0 0% 95%;
+    
+    /* Cinema red primary palette */
+    --primary: 0 84% 52%;
+    --primary-foreground: 0 0% 98%;
+    --primary-dark: 0 84% 42%;
+    --primary-light: 0 84% 62%;
+    
+    /* Gold accent palette */
+    --accent-gold: 43 100% 58%;
+    --accent-gold-dark: 43 100% 48%;
+    --accent-gold-light: 43 100% 68%;
+    
+    /* Surface colors */
+    --surface: 220 14% 12%;
+    --surface-elevated: 220 14% 16%;
+    --surface-hover: 220 14% 20%;
+    
+    /* Cinema gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 14% 8%), hsl(0 84% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(220 14% 12%), hsl(220 14% 16%));
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 52%), hsl(0 84% 42%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 100% 58%), hsl(43 100% 48%));
+    
+    /* Shadows */
+    --shadow-cinema: 0 10px 30px -10px hsl(0 84% 12% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(220 14% 8% / 0.4);
+    --shadow-glow: 0 0 40px hsl(0 84% 52% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: var(--surface);
+    --card-foreground: var(--foreground);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: var(--surface-elevated);
+    --popover-foreground: var(--foreground);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --secondary: var(--surface-elevated);
+    --secondary-foreground: var(--foreground);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: var(--surface);
+    --muted-foreground: 0 0% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: var(--accent-gold);
+    --accent-foreground: 220 14% 8%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84% 52%;
+    --destructive-foreground: var(--foreground);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 14% 20%;
+    --input: var(--surface-elevated);
+    --ring: var(--primary);
 
     --radius: 0.5rem;
 
@@ -101,5 +128,57 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Cinema button variants */
+  .btn-cinema-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark text-primary-foreground;
+    @apply hover:from-primary-light hover:to-primary;
+    @apply transition-all duration-300 transform hover:scale-105;
+    @apply shadow-lg hover:shadow-glow;
+  }
+  
+  .btn-cinema-gold {
+    @apply bg-gradient-to-r from-accent-gold to-accent-gold-dark text-accent-foreground;
+    @apply hover:from-accent-gold-light hover:to-accent-gold;
+    @apply transition-all duration-300 transform hover:scale-105;
+  }
+  
+  /* Movie card styles */
+  .movie-card {
+    @apply bg-gradient-to-b from-surface to-surface-elevated;
+    @apply border border-border rounded-lg overflow-hidden;
+    @apply transition-all duration-300 hover:scale-105;
+    @apply shadow-card hover:shadow-cinema;
+  }
+  
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Glass effect */
+  .glass-effect {
+    @apply backdrop-blur-md bg-surface/80 border border-border/50;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
   }
 }
